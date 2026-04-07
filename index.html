@@ -106,7 +106,7 @@
         <div id="results"></div>
     </div>
 
-    <script>
+  <script>
         let allUrls = [];
 
         function generateLinks() {
@@ -129,14 +129,14 @@
 
         function displayBatches() {
             const resultsDiv = document.getElementById('results');
-            resultsDiv.innerHTML = `<h4 style="color: #00ff00;">&gt; ${allUrls.length} LINKS GENERATED SUCCESSFULLY</h4>`;
+            resultsDiv.innerHTML = `<h4 style="color: #00ff00;">> ${allUrls.length} LINKS GENERATED SUCCESSFULLY</h4>`;
 
             const batchSize = 6;
             for (let i = 0; i < allUrls.length; i += batchSize) {
                 const batch = allUrls.slice(i, i + batchSize);
                 const btn = document.createElement('button');
                 btn.className = 'batch-btn';
-                btn.innerText = `&gt; OPEN BATCH [${i + 1}-${i + batch.length}]`;
+                btn.innerText = `> OPEN BATCH [${i + 1}-${i + batch.length}]`;
                 
                 btn.onclick = () => {
                     batch.forEach(link => window.open(link, '_blank'));
