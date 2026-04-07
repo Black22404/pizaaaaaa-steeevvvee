@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prolific Link Generator</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            background-color: #000000;
+            color: #00ff00;
+            padding: 50px 20px;
+            margin: 0;
+        }
+        .container {
+            background: #0a0a0a;
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 5px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.2);
+        }
+        h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        p {
+            font-size: 14px;
+            color: #88ff88;
+        }
+        input {
+            width: 80%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #00ff00;
+            background-color: #000000;
+            color: #00ff00;
+            border-radius: 3px;
+            font-size: 16px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        button.generate-btn {
+            background-color: #00aa00;
+            color: #000000;
+            border: 1px solid #00ff00;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Courier New', Courier, monospace;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        button.generate-btn:hover {
+            background-color: #00ff00;
+            box-shadow: 0 0 10px #00ff00;
+        }
+        .batch-btn {
+            background-color: #000000;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .batch-btn:hover {
+            background-color: #003300;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        #results {
+            margin-top: 30px;
+            border-top: 1px dashed #00ff00;
+            padding-top: 20px;
+        }
+        .warning {
+            color: #ff3333;
+            font-size: 13px;
+            margin-top: 15px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>&gt; Pizzaaaaaa</h2>
+        <p>Paste the base link below. 36 permutations will be generated.</p>
+        
+        <input type="text" id="urlInput" placeholder="https://app.prolific.com/studies/...">
+        <br>
+        <button class="generate-btn" onclick="generateLinks()">[ Generate ]</button>
+        <p class="warning">! CRITICAL: ALLOW POP-UPS IN YOUR BROWSER !</p>
+
+        <div id="results"></div>
+    </div>
+
+    <script>
+        let allUrls = [];
+
+        function generateLinks() {
+            const url = document.getElementById('urlInput').value.trim();
+            if (!url) {
+                alert("ERROR: INVALID URL INPUT");
+                return;
+            }
+
+            const baseUrl = url.slice(0, -1);
+            allUrls = [];
+            const digits = "0123456789";
+            const letters = "abcdefghijklmnopqrstuvwxyz";
+
+            for (let d of digits) { allUrls.push(baseUrl + d); }
+            for (let l of letters) { allUrls.push(baseUrl + l); }
+
+            displayBatches();
+        }
+
+        function displayBatches() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `<h4 style="color: #00ff00;">&gt; ${allUrls.length} LINKS GENERATED SUCCESSFULLY</h4>`;
+
+            const batchSize = 5;
+            for (let i = 0; i < allUrls.length; i += batchSize) {
+                const batch = allUrls.slice(i, i + batchSize);
+                const btn = document.createElement('button');
+                btn.className = 'batch-btn';
+                btn.innerText = `&gt; OPEN BATCH [${i + 1}-${i + batch.length}]`;
+                
+                btn.onclick = () => {
+                    batch.forEach(link => window.open(link, '_blank'));
+                };
+                
+                resultsDiv.appendChild(btn);
+            }
+        }
+    </script>
+</body>
+</html>
