@@ -95,13 +95,13 @@
 <body>
 
     <div class="container">
-        <h2>&gt; Pizzaaaaaa :")</h2>
+        <h2>&gt; Pizzaaaaaa ^‿^ </h2>
         <p>Paste the base link below. 36 permutations will be generated.</p>
         
         <input type="text" id="urlInput" placeholder="https://app.prolific.com/studies/...">
         <br>
         <button class="generate-btn" onclick="generateLinks()">[ Generate ]</button>
-        <p class="warning">! CRITICAL:Please ALLOW POP-UPS IN YOUR BROWSER IF Needed !</p>
+        <p class="warning">! CRITICAL: ALLOW POP-UPS IN YOUR BROWSER OR DON'T ANYWAY !</p>
 
         <div id="results"></div>
     </div>
@@ -131,7 +131,7 @@
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = `<h4 style="color: #00ff00;">&gt; ${allUrls.length} LINKS GENERATED SUCCESSFULLY</h4>`;
 
-            const batchSize = 5;
+            const batchSize = 6;
             for (let i = 0; i < allUrls.length; i += batchSize) {
                 const batch = allUrls.slice(i, i + batchSize);
                 const btn = document.createElement('button');
