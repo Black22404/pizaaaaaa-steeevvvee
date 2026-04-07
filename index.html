@@ -131,7 +131,7 @@
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = `<h4 style="color: #00ff00;">&gt; ${allUrls.length} LINKS GENERATED SUCCESSFULLY</h4>`;
 
-            const batchSize = 5;
+            const batchSize = 6;
             for (let i = 0; i < allUrls.length; i += batchSize) {
                 const batch = allUrls.slice(i, i + batchSize);
                 const btn = document.createElement('button');
