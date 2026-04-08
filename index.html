@@ -95,8 +95,8 @@
 <body>
 
     <div class="container">
-        <h2>&gt; Pizzaaaaaa ^‿^ </h2>
-        <p>Paste the base link below. 36 permutations will be generated.</p>
+        <h2>&gt; Bla bla bla </h2>
+        <p>Paste the base link below. 15 permutations will be generated.</p>
         
         <input type="text" id="urlInput" placeholder="https://app.prolific.com/studies/...">
         <br>
@@ -119,7 +119,7 @@
             const baseUrl = url.slice(0, -1);
             allUrls = [];
             const digits = "0123456789";
-            const letters = "abcdefghijklmnopqrstuvwxyz";
+            const letters = "abcdef";
 
             for (let d of digits) { allUrls.push(baseUrl + d); }
             for (let l of letters) { allUrls.push(baseUrl + l); }
